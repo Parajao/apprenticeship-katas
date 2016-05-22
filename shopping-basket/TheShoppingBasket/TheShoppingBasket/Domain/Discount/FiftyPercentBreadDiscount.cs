@@ -22,14 +22,10 @@ namespace TheShoppingBasket.Domain.Discount
 
         private bool CanApplyOffer(Products products)
         {
-            var butter = products.FindButter(new Butter());
-            var bread = products.FindBread(new Bread());
-            if (butter == null || bread == null)
-            {
-                return false;
-            }
+            var butterQuantity = products.QuantityOf(new Butter());
+            var breadQuantity = products.QuantityOf(new Bread());
 
-            return bread.Quantity > 0 && butter.Quantity > 1;
+            return breadQuantity > 0 && butterQuantity > 1;
         }
     }
 }

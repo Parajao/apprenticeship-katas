@@ -49,14 +49,17 @@ namespace TheShoppingBasket.Domain.Product
             return GetEnumerator();
         }
 
-        public Product FindButter(Butter butter)
+        public Product Find(Product product)
         {
-            return _products.SingleOrDefault(product => product.Equals(butter));
+            return _products
+                .Where(p => p.Equals(product))
+                .DefaultIfEmpty(new NullProduct())
+                .Single();
         }
 
-        public Product FindBread(Bread bread)
+        public int QuantityOf(Product product)
         {
-            return _products.SingleOrDefault(product => product.Equals(bread));
+            return Find(product).Quantity;
         }
     }
 }
