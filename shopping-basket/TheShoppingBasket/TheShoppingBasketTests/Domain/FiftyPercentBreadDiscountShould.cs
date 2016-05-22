@@ -1,6 +1,6 @@
 ﻿using TheShoppingBasket.Domain;
+using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Domain.Discount;
-using TheShoppingBasket.Domain.Product;
 using Xunit;
 
 namespace TheShoppingBasketTests.Domain
@@ -22,7 +22,7 @@ namespace TheShoppingBasketTests.Domain
             AddButter(products, butterQuantity);
             AddBread(products, breadQuantity);
 
-            Money discount = fiftyPercentBreadDiscount.Apply(products);
+            Money discount = fiftyPercentBreadDiscount.ApplyTo(products);
 
             Assert.Equal(new Money(expectedDiscount), discount);
         }

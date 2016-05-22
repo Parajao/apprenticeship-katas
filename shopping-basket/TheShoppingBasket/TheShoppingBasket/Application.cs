@@ -1,6 +1,6 @@
 ﻿using System;
 using TheShoppingBasket.Domain;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Infrastructure;
 using TheShoppingBasket.Services;
 

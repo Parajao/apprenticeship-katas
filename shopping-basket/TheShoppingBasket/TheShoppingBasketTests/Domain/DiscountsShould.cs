@@ -1,6 +1,6 @@
 ﻿using TheShoppingBasket.Domain;
+using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Domain.Discount;
-using TheShoppingBasket.Domain.Product;
 using Xunit;
 
 namespace TheShoppingBasketTests.Domain
@@ -18,7 +18,7 @@ namespace TheShoppingBasketTests.Domain
             AddProduct(products, new Bread(), 1);
             AddProduct(products, new Milk(), 4);
 
-            Money discount = _discounts.Apply(products);
+            Money discount = _discounts.ApplyTo(products);
 
             var severalDiscountsApplied = 1.65m;
             Assert.Equal(new Money(severalDiscountsApplied), discount);

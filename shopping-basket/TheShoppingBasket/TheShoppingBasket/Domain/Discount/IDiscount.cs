@@ -1,9 +1,9 @@
-﻿using TheShoppingBasket.Domain.Product;
+﻿using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Domain.Discount
 {
     public interface IDiscount
     {
-        Money Apply(Products products);
+        Money ApplyTo(Products products);
     }
 }

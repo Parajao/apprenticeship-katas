@@ -1,6 +1,6 @@
 ﻿using NSubstitute;
 using TheShoppingBasket.Domain;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 using Xunit;
 
 namespace TheShoppingBasketTests.Domain

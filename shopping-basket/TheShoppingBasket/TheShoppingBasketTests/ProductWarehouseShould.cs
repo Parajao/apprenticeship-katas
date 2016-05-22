@@ -1,5 +1,5 @@
 ﻿using System;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Services;
 using Xunit;
 

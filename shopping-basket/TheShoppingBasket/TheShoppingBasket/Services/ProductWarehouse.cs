@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Services
 {

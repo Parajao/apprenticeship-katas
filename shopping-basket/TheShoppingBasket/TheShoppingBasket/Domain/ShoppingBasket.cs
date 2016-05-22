@@ -1,11 +1,11 @@
+using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Domain.Discount;
-using TheShoppingBasket.Domain.Product;
 
 namespace TheShoppingBasket.Domain
 {
     public interface IShoppingBasket
     {
-        void Add(Product.Product product);
+        void Add(Product product);
         Money Total();
     }
 
@@ -14,14 +14,14 @@ namespace TheShoppingBasket.Domain
         private readonly Products _products = new Products();
         private readonly Discounts _discounts = new Discounts();
 
-        public void Add(Product.Product product)
+        public void Add(Product product)
         {
             _products.Add(product);
         }
 
         public Money Total()
         {
-            return _products.TotalCost() - _discounts.Apply(_products);
+            return _products.TotalCost() - _discounts.ApplyTo(_products);
         }
     }
 }

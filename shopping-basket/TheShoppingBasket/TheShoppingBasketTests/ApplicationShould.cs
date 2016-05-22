@@ -1,7 +1,7 @@
 ﻿using NSubstitute;
 using TheShoppingBasket;
 using TheShoppingBasket.Domain;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 using TheShoppingBasket.Infrastructure;
 using Xunit;
 

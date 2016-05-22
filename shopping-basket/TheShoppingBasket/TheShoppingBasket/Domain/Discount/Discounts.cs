@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using TheShoppingBasket.Domain.Product;
+using TheShoppingBasket.Domain.Basket;
 
 namespace TheShoppingBasket.Domain.Discount
 {
@@ -16,11 +16,12 @@ namespace TheShoppingBasket.Domain.Discount
             };
         }
 
-        public Money Apply(Products products)
+        public Money ApplyTo(Products products)
         {
             return _discounts
-                .Select(discount => discount.Apply(products))
-                .Aggregate((discount, nextDiscount) => discount + nextDiscount);
+               .Select(discount => discount.ApplyTo(products))
+               .Aggregate((discount, nextDiscount) => 
+                    discount + nextDiscount);
         }
     }
 }
