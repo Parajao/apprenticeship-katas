@@ -48,5 +48,10 @@ namespace TheShoppingBasket.Domain.Product
         {
             return GetEnumerator();
         }
+
+        public Product FindButter(Butter butter)
+        {
+            return _products.SingleOrDefault(product => product.Equals(butter));
+        }
     }
 }
