@@ -37,18 +37,11 @@ namespace TheShoppingBasketTests.Domain
         public void return_cost_when_contains_several_products()
         {
             AddSeveralProducts();
+            var severalProductsCost = new Money(2.95m);
 
-            Money cost = _products.TotalCost();
+            var cost = _products.TotalCost();
 
-            var severalProductsCost = 2.95m;
-            Assert.Equal(new Money(severalProductsCost), cost);
-        }
-
-        private void AddSeveralProducts()
-        {
-            AddProduct(new Milk());
-            AddProduct(new Butter());
-            AddProduct(new Bread());
+            Assert.Equal(severalProductsCost, cost);
         }
 
         [Fact]
@@ -56,11 +49,11 @@ namespace TheShoppingBasketTests.Domain
         {
             AddProducts(new Bread(), 4);
             AddProducts(new Bread(), 2);
+            var severalProductsCost = new Money(6m);
 
-            Money cost = _products.TotalCost();
+            var totalCost = _products.TotalCost();
 
-            var severalProductsCost = 6m;
-            Assert.Equal(new Money(severalProductsCost), cost);
+            Assert.Equal(severalProductsCost, totalCost);
         }
 
         private void AddProduct(Product product)
@@ -72,6 +65,13 @@ namespace TheShoppingBasketTests.Domain
         {
             product.IncreaseQuantityBy(quantity);
             _products.Add(product);
+        }
+
+        private void AddSeveralProducts()
+        {
+            AddProduct(new Milk());
+            AddProduct(new Butter());
+            AddProduct(new Bread());
         }
     }
 }
