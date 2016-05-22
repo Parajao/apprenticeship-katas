@@ -12,16 +12,15 @@ namespace TheShoppingBasketTests.Domain
         [Fact]
         public void apply_all_individual_discounts()
         {
-            Products products = new Products();
-
+            var severalDiscountsApplyed = new Money(1.65m);
+            var products = new Products();
             AddProduct(products, new Butter(), 2);
             AddProduct(products, new Bread(), 1);
             AddProduct(products, new Milk(), 4);
 
-            Money discount = _discounts.ApplyTo(products);
+            var totalDiscount = _discounts.ApplyTo(products);
 
-            var severalDiscountsApplied = 1.65m;
-            Assert.Equal(new Money(severalDiscountsApplied), discount);
+            Assert.Equal(severalDiscountsApplyed, totalDiscount);
         }
 
         private void AddProduct(Products products, Product product, int quantity)
