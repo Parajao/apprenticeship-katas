@@ -53,5 +53,10 @@ namespace TheShoppingBasket.Domain.Product
         {
             return _products.SingleOrDefault(product => product.Equals(butter));
         }
+
+        public Product FindBread(Bread bread)
+        {
+            return _products.SingleOrDefault(product => product.Equals(bread));
+        }
     }
 }

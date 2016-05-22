@@ -23,7 +23,7 @@ namespace TheShoppingBasket.Domain.Discount
         private bool CanApplyOffer(Products products)
         {
             var butter = products.FindButter(new Butter());
-            var bread = products.SingleOrDefault(product => product.Equals(new Bread()));
+            var bread = products.FindBread(new Bread());
             if (butter == null || bread == null)
             {
                 return false;
