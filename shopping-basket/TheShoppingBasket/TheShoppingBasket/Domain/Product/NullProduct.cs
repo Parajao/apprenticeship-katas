@@ -4,8 +4,6 @@
     {
         public override Money Price => new Money();
 
-        public NullProduct() : base("")
-        {
-        }
+        public NullProduct() : base("") {}
     }
 }

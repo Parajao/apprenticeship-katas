@@ -1,5 +1,4 @@
 ﻿using TheShoppingBasket.Domain.Product;
-using TheShoppingBasket.Services;
 
 namespace TheShoppingBasket.Domain.Discount
 {

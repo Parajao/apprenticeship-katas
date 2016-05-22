@@ -21,7 +21,7 @@ namespace TheShoppingBasket.Domain
 
         public Money Total()
         {
-            return _products.Cost() - _discounts.Apply(_products);
+            return _products.TotalCost() - _discounts.Apply(_products);
         }
     }
 }

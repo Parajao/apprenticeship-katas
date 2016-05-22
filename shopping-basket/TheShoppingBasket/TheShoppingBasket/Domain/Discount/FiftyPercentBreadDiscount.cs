@@ -9,15 +9,10 @@ namespace TheShoppingBasket.Domain.Discount
         {
             if (CanApplyOffer(products))
             {
-                return Offer();
+                return new Bread().Price.FiftyPercent();
             }
 
             return new Money();
-        }
-
-        private Money Offer()
-        {
-            return new Bread().Price.FiftyPercent();
         }
 
         private bool CanApplyOffer(Products products)

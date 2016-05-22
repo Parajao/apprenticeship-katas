@@ -18,25 +18,34 @@ namespace TheShoppingBasket.Domain.Product
             var existingProduct = _products.SingleOrDefault(p => p.Equals(product));
             if (existingProduct != null)
             {
-                existingProduct.AddQuantity(product.Quantity);
+                existingProduct.IncreaseQuantityBy(product.Quantity);
                 return;
             }
             
             _products.Add(product);
         }
 
-        public Money Cost()
+        public Money TotalCost()
         {
-            var cost = new Money();
+            if (!_products.Any())
+                return new Money();
 
-            if (_products.Any())
-            {
-                cost = _products
+            return _products
                 .Select(product => product.Cost())
                 .Aggregate((amount, nextAmount) => amount + nextAmount);
-            }
+        }
 
-            return cost;
+        public int QuantityOf(Product product)
+        {
+            return Find(product).Quantity;
+        }
+
+        private Product Find(Product product)
+        {
+            return _products
+                .Where(p => p.Equals(product))
+                .DefaultIfEmpty(new NullProduct())
+                .Single();
         }
 
         public IEnumerator<Product> GetEnumerator()
@@ -47,19 +56,6 @@ namespace TheShoppingBasket.Domain.Product
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
-        }
-
-        public Product Find(Product product)
-        {
-            return _products
-                .Where(p => p.Equals(product))
-                .DefaultIfEmpty(new NullProduct())
-                .Single();
-        }
-
-        public int QuantityOf(Product product)
-        {
-            return Find(product).Quantity;
         }
     }
 }

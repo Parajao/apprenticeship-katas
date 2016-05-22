@@ -30,14 +30,14 @@ namespace TheShoppingBasketTests.Domain
         private void AddButter(Products products, int quantity)
         {
             Butter butter = new Butter();
-            butter.AddQuantity(quantity);
+            butter.IncreaseQuantityBy(quantity);
             products.Add(butter);
         }
 
         private void AddBread(Products products, int quantity)
         {
             Bread bread = new Bread();
-            bread.AddQuantity(quantity);
+            bread.IncreaseQuantityBy(quantity);
             products.Add(bread);
         }
     }

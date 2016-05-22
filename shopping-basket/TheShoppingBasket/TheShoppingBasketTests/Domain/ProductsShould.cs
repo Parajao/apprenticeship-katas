@@ -16,7 +16,7 @@ namespace TheShoppingBasketTests.Domain
         [Fact]
         public void return_zero_cost_when_no_product_have_been_added()
         {
-            Money cost = _products.Cost();
+            var cost = _products.TotalCost();
 
             Assert.Equal(new Money(0.0m), cost);
         }
@@ -24,25 +24,31 @@ namespace TheShoppingBasketTests.Domain
         [Fact]
         public void return_cost_of_single_product_added()
         {
-            AddProduct(new Bread());
+            var product = new Bread();
+            var singleProductPrice = product.Price;
+            AddProduct(product);
 
-            Money cost = _products.Cost();
+            var totalCost = _products.TotalCost();
 
-            var singleProductCost = 1.00m;
-            Assert.Equal(new Money(singleProductCost), cost);
+            Assert.Equal(singleProductPrice, totalCost);
         }
 
         [Fact]
         public void return_cost_when_contains_several_products()
         {
-            AddProduct(new Milk());
-            AddProduct(new Butter());
-            AddProduct(new Bread());
+            AddSeveralProducts();
 
-            Money cost = _products.Cost();
+            Money cost = _products.TotalCost();
 
             var severalProductsCost = 2.95m;
             Assert.Equal(new Money(severalProductsCost), cost);
+        }
+
+        private void AddSeveralProducts()
+        {
+            AddProduct(new Milk());
+            AddProduct(new Butter());
+            AddProduct(new Bread());
         }
 
         [Fact]
@@ -51,7 +57,7 @@ namespace TheShoppingBasketTests.Domain
             AddProducts(new Bread(), 4);
             AddProducts(new Bread(), 2);
 
-            Money cost = _products.Cost();
+            Money cost = _products.TotalCost();
 
             var severalProductsCost = 6m;
             Assert.Equal(new Money(severalProductsCost), cost);
@@ -64,7 +70,7 @@ namespace TheShoppingBasketTests.Domain
 
         private void AddProducts(Product product, int quantity)
         {
-            product.AddQuantity(quantity);
+            product.IncreaseQuantityBy(quantity);
             _products.Add(product);
         }
     }

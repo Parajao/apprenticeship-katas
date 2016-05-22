@@ -36,7 +36,7 @@ namespace TheShoppingBasket.Services
         private Product PrepareProduct(string product, int quantity)
         {
             var productInCatalogue = _productCatalogue[product];
-            productInCatalogue.AddQuantity(quantity);
+            productInCatalogue.IncreaseQuantityBy(quantity);
 
             return productInCatalogue;
         }

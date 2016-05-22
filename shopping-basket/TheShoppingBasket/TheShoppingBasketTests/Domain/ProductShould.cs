@@ -19,7 +19,7 @@ namespace TheShoppingBasketTests.Domain
         {
             Product product = Substitute.For<Product>("dummy");
 
-            product.AddQuantity(2);
+            product.IncreaseQuantityBy(2);
 
             Assert.Equal(2, product.Quantity);
         }
@@ -31,7 +31,7 @@ namespace TheShoppingBasketTests.Domain
             var productPrice = new Money(1.0m);
             product.Price.Returns(productPrice);
 
-            product.AddQuantity(2);
+            product.IncreaseQuantityBy(2);
 
             Assert.Equal(productPrice * 2, product.Cost());
         }

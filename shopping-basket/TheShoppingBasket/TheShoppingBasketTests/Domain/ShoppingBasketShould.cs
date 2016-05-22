@@ -75,7 +75,7 @@ namespace TheShoppingBasketTests.Domain
 
         private void AddProduct(Product product, int quantity)
         {
-            product.AddQuantity(quantity);
+            product.IncreaseQuantityBy(quantity);
             _shoppingBasket.Add(product);
         }
     }
