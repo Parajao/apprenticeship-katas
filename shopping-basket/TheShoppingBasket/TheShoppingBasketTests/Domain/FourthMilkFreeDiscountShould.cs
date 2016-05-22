@@ -18,10 +18,10 @@ namespace TheShoppingBasketTests.Domain
         [InlineData(14, 3.45)]
         public void discount_4th_milk(int quantity, decimal expectedDiscount)
         {
-            Products products = new Products();
+            var products = new Products();
             AddMilks(products, quantity);
 
-            Money discount = _fourthMilkFreeDiscount.ApplyTo(products);
+            var discount = _fourthMilkFreeDiscount.ApplyTo(products);
 
             Assert.Equal(new Money(expectedDiscount), discount);
         }

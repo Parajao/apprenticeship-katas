@@ -5,72 +5,78 @@ namespace TheShoppingBasketTests.Domain
 {
     public class MoneyShould
     {
+        private Money ONE_POUNDS = new Money(1.00m);
+        private Money TWO_POUNDS = new Money(2.0m);
+        private Money ZERO_POUNDS = new Money();
+        private Money FOUR_POUNDS = new Money(4.0m);
+        private Money THREE_POUNDS = new Money(3.0m);
+
         [Fact]
         public void equal_to_zero_when_no_amount_is_provided()
         {
-            Money zeroAmount = new Money();
+            var money = new Money(0.0m);
 
-            Assert.Equal(new Money(0.0m), zeroAmount);
+            Assert.Equal(ZERO_POUNDS, money);
         }
 
         [Fact]
         public void equal_to_another_money_if_amount_is_same()
         {
-            Money originalMoney = new Money(1.0m);
-            Money anotherMoney = new Money(1.0m);
+            var anotherMoney = new Money(1.0m);
 
-            Assert.Equal(originalMoney, anotherMoney);
+            var money = new Money(1.0m);
+
+            Assert.Equal(anotherMoney, money);
         }
 
         [Fact]
         public void not_equal_to_another_money_if_amount_is_different()
         {
-            Money originalMoney = new Money(1.0m);
-            Money anotherMoney = new Money(2.0m);
+            var anotherMoney = new Money(2.0m);
 
-            Assert.NotEqual(originalMoney, anotherMoney);
+            var money = new Money(1.0m);
+
+            Assert.NotEqual(anotherMoney, money);
         }
 
         [Fact]
         public void sum_two_moneys()
         {
-            Money first = new Money(1.0m);
-            Money second = new Money(2.0m);
+            var sum = ONE_POUNDS + TWO_POUNDS;
 
-            Assert.Equal(new Money(3.0m), first + second);
+            Assert.Equal(THREE_POUNDS, sum);
         }
 
         [Fact]
         public void substract_two_moneys()
         {
-            Money first = new Money(2.0m);
-            Money second = new Money(1.0m);
+            var difference = TWO_POUNDS - ONE_POUNDS;
 
-            Assert.Equal(new Money(1.0m), first - second);
+            Assert.Equal(ONE_POUNDS, difference);
         }
 
         [Fact]
         public void be_multipliable_by_integer()
         {
-            Money money = new Money(2.0m);
+            var twoTimes2 = TWO_POUNDS * 2;
 
-            Assert.Equal(new Money(4.0m), money * 2);
+            Assert.Equal(FOUR_POUNDS, twoTimes2);
         }
 
         [Fact]
         public void perform_fifty_percent()
         {
-            Money money = new Money(2.0m);
+            var fiftyPercentOfTwo = TWO_POUNDS.FiftyPercent();
 
-            Assert.Equal(new Money(1.0m), money.FiftyPercent());
+            Assert.Equal(ONE_POUNDS, fiftyPercentOfTwo);
         }
 
         [Fact]
         public void have_string_representation()
         {
-            Money money = new Money(1.00m);
+            var moneyAsString = ONE_POUNDS.ToString();
 
-            Assert.Equal("£1.00", money.ToString());
+            Assert.Equal("£1.00", moneyAsString);
         }
     }
 }

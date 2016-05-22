@@ -7,7 +7,7 @@ namespace TheShoppingBasketTests.Domain
 {
     public class FiftyPercentBreadDiscountShould
     {
-        private readonly IDiscount fiftyPercentBreadDiscount = new FiftyPercentBreadDiscount();
+        private readonly IDiscount _fiftyPercentBreadDiscount = new FiftyPercentBreadDiscount();
 
         [Theory]
         [InlineData(1, 1, 0.00)]
@@ -18,25 +18,25 @@ namespace TheShoppingBasketTests.Domain
         [InlineData(4, 2, 0.50)]
         public void discount_a_bread_at_50_percent_off(int butterQuantity, int breadQuantity, decimal expectedDiscount)
         {
-            Products products = new Products();
+            var products = new Products();
             AddButter(products, butterQuantity);
             AddBread(products, breadQuantity);
 
-            Money discount = fiftyPercentBreadDiscount.ApplyTo(products);
+            var discount = _fiftyPercentBreadDiscount.ApplyTo(products);
 
             Assert.Equal(new Money(expectedDiscount), discount);
         }
 
         private void AddButter(Products products, int quantity)
         {
-            Butter butter = new Butter();
+            var butter = new Butter();
             butter.IncreaseQuantityBy(quantity);
             products.Add(butter);
         }
 
         private void AddBread(Products products, int quantity)
         {
-            Bread bread = new Bread();
+            var bread = new Bread();
             bread.IncreaseQuantityBy(quantity);
             products.Add(bread);
         }
